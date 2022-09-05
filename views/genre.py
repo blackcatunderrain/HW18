@@ -3,35 +3,35 @@
 # Пример
 from flask_restx import Resource, Namespace
 
-movies_ns = Namespace('movie')
+genre_ns = Namespace('genre')
 
 
-@movies_ns.route('/')
-@movies_ns.param('director_id')
-@movies_ns.param('genre_id')
-@movies_ns.param('year')
-class MovieView(Resource):
+@genre_ns.route('/')
+@genre_ns.param('director_id')
+@genre_ns.param('genre_id')
+@genre_ns.param('year')
+class GenreView(Resource):
     def get(self):
-        """Get all movies"""
+        """Get all genre"""
 
         return "", 200
 
     def post(self):
-        """Add a new movie"""
+        """Add a new genre"""
         return "", 201
 
 
-@movies_ns.route('/<int:movie_id>')
-class MovieView(Resource):
-    def get(self, movie_id: int):
-        """Get all movies by id"""
+@genre_ns.route('/<int:genre_id>')
+class GenreView(Resource):
+    def get(self, genre_id: int):
+        """Get all genre by id"""
 
         return "", 200
 
-    def put(self, movie_id: int):
-        """Add a new movie"""
+    def put(self, genre_id: int):
+        """Add a new genre"""
         return "", 201
 
-    def delete(self, movie_id: int):
+    def delete(self, genre_id: int):
         """Delete by id"""
         return "", 200
