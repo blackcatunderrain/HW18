@@ -15,13 +15,15 @@ class MovieService:
             return self.movie_dao.get_movie_by_many_filters(
                 director_id=director_id, genre_id=genre_id, year=year
             )
+        elif id is not None:
+            return self.movie_dao.get_movie_by_id(id)
 
-        if director_id is not None:
-            return self.movie_dao.get_movie_by_director_id(director_id)
-        elif genre_id is not None:
-            return self.movie_dao.get_movie_by_genre_id(genre_id)
-        elif year is not None:
-            return self.movie_dao.get_movie_by_year(year)
+        # if director_id is not None:
+        #     return self.movie_dao.get_movie_by_director_id(director_id)
+        # elif genre_id is not None:
+        #     return self.movie_dao.get_movie_by_genre_id(genre_id)
+        # elif year is not None:
+        #     return self.movie_dao.get_movie_by_year(year)
 
         else:
             return []

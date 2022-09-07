@@ -11,7 +11,7 @@ class DirectorService:
         return self.director_dao.get_all_directors()
 
     def get_director_by(self, id):
-        return self.director_dao.get_director_byid(id)
+        return self.director_dao.get_director_by_id(id)
 
 
 

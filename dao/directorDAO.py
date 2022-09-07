@@ -9,5 +9,5 @@ class DirectorDAO:
     def get_all_directors(self):
         return self.session.query(Director).all()
 
-    def get_director_byid(self, id: int):
+    def get_director_by_id(self, id: int):
         return self.session.query(Director).filter(Director.id == id).one()

@@ -1,9 +1,12 @@
 # здесь контроллеры/хендлеры/представления для обработки запросов (flask ручки). сюда импортируются сервисы из пакета service
 
-# Пример
 from flask_restx import Resource, Namespace
 
+from dao.model.schema import MovieSchema
+from implemented import movie_service
+
 movies_ns = Namespace('movie')
+movies_schema = MovieSchema(many=True)
 
 
 @movies_ns.route('/')
@@ -13,8 +16,7 @@ movies_ns = Namespace('movie')
 class MovieView(Resource):
     def get(self):
         """Get all movies"""
-
-        return "", 200
+        return movies_schema.dump(movie_service.get_movies()), 200
 
     def post(self):
         """Add a new movie"""
@@ -25,8 +27,7 @@ class MovieView(Resource):
 class MovieView(Resource):
     def get(self, movie_id: int):
         """Get all movies by id"""
-
-        return "", 200
+        return movies_schema.dump([movie_service.get_movie_by(movie_id)]), 200
 
     def put(self, movie_id: int):
         """Add a new movie"""
