@@ -8,7 +8,7 @@ class GenreService:
         self.genre_dao = genre_dao
 
     def get_genres(self) -> list[Genre]:
-        return self.genre_dao.get_allgenres()
+        return self.genre_dao.get_all_genres()
 
     def get_genre_by(self, id):
         return self.genre_dao.get_genre_by_id(id)

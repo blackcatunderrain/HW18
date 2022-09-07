@@ -15,3 +15,4 @@ typing-extensions==4.3.0
 Werkzeug==2.1.2
 zipp==3.8.1
 marshmallow~=3.17.1
+SQLAlchemy~=1.4.40
