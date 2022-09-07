@@ -13,13 +13,13 @@ class MovieDAO:
         return self.session.query(Movie).filter(Movie.id == id).one()
 
     def get_movie_by_director_id(self, director_id: int):
-        return self.session.query(Movie).filter(Movie.director_id == director_id).one()
+        return self.session.query(Movie).filter(Movie.director_id == director_id).all()
 
     def get_movie_by_genre_id(self, genre_id: int):
-        return self.session.query(Movie).filter(Movie.genre_id == genre_id).one()
+        return self.session.query(Movie).filter(Movie.genre_id == genre_id).all()
 
     def get_movie_by_year(self, year: int):
-        return self.session.query(Movie).filter(Movie.year == year).one()
+        return self.session.query(Movie).filter(Movie.year == year).all()
 
     def get_movie_by_many_filters(self, **kwargs):
         return self.session.query(Movie).filter_by(**kwargs).all()
@@ -36,9 +36,9 @@ class MovieDAO:
             print("Error creating Movie: %s" % e)
             self.session.rollback()
 
-    def update(self, **kwargs):
+    def update(self, kwargs):
         try:
-            self.session.query(Movie).filter(Movie.id == kwargs.get('id')).update(**kwargs)
+            self.session.query(Movie).filter(Movie.id == kwargs.get('id')).update(kwargs)
             self.session.commit()
         except Exception as e:
             print("Error updating Movie: %s" % e)
